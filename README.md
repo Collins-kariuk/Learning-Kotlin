@@ -1,3 +1,3 @@
-# weather-forecast-website
+# Teaching myself Kotlin
 
-Progress to be made starting 15th December 2023. Tune in then!
+All material is from Google Developer's "Android Basics with Compose" course.
