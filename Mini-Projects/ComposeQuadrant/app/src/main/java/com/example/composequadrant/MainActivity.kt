@@ -41,15 +41,19 @@ import androidx.compose.ui.unit.dp
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 
 class MainActivity : ComponentActivity() {
+    // Override the onCreate method to set the content view
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Set the content to a Composable function
         setContent {
+            // Apply the app theme
             ComposeQuadrantTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    // Call the ComposeQuadrantApp composable function
                     ComposeQuadrantApp()
                 }
             }
@@ -57,9 +61,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// Composable function to display the main content of the app
 @Composable
 fun ComposeQuadrantApp() {
+    // Create a column to arrange the rows vertically
     Column(Modifier.fillMaxWidth()) {
+        // First row of info cards
         Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.first_title),
@@ -74,6 +81,7 @@ fun ComposeQuadrantApp() {
                 modifier = Modifier.weight(1f)
             )
         }
+        // Second row of info cards
         Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(R.string.third_title),
@@ -91,6 +99,7 @@ fun ComposeQuadrantApp() {
     }
 }
 
+// Composable function to display an info card
 @Composable
 private fun ComposableInfoCard(
     title: String,
@@ -98,29 +107,34 @@ private fun ComposableInfoCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
+    // Create a column to arrange the texts vertically
     Column(
         modifier = modifier
-            .fillMaxSize()
-            .background(backgroundColor)
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .fillMaxSize()  // Make the column fill the entire available space
+            .background(backgroundColor)  // Set the background color
+            .padding(16.dp),  // Add padding around the column
+        verticalArrangement = Arrangement.Center,  // Center align the children vertically
+        horizontalAlignment = Alignment.CenterHorizontally // Center align the children horizontally
     ) {
+        // Display the title text
         Text(
             text = title,
-            modifier = Modifier.padding(bottom = 16.dp),
-            fontWeight = FontWeight.Bold
+            modifier = Modifier.padding(bottom = 16.dp),  // Add padding at the bottom of the text
+            fontWeight = FontWeight.Bold  // Set the font weight to bold
         )
+        // Display the description text
         Text(
             text = description,
-            textAlign = TextAlign.Justify
+            textAlign = TextAlign.Justify  // Justify the text
         )
     }
 }
 
+// Composable function to preview the ComposeQuadrantApp
 @Preview(showBackground = true)
 @Composable
 fun ComposeQuadrantAppPreview() {
+    // Apply the app theme for the preview
     ComposeQuadrantTheme {
         ComposeQuadrantApp()
     }
