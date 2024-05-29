@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2023 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.example.tiptime
 
 import android.os.Bundle
@@ -92,12 +77,14 @@ fun TipTimeLayout() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        // The "Calculate Tip" title
         Text(
             text = stringResource(R.string.calculate_tip),
             modifier = Modifier
                 .padding(bottom = 16.dp, top = 40.dp)
                 .align(alignment = Alignment.Start)
         )
+        // The "Bill Amount" text field
         EditNumberField(
             label = R.string.bill_amount,
             leadingIcon = R.drawable.money,
@@ -109,6 +96,7 @@ fun TipTimeLayout() {
             onValueChanged = { amountInput = it },
             modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
         )
+        // The "Tip Percentage" text field
         EditNumberField(
             label = R.string.how_was_the_service,
             leadingIcon = R.drawable.percent,
@@ -120,11 +108,13 @@ fun TipTimeLayout() {
             onValueChanged = { tipInput = it },
             modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
         )
+        // The "Round the tip" toggle switch
         RoundTheTipRow(
             roundUp = roundUp,
             onRoundUpChanged = { roundUp = it },
             modifier = Modifier.padding(bottom = 32.dp)
         )
+        // The "Tip Amount" text
         Text(
             text = stringResource(R.string.tip_amount, tip),
             style = MaterialTheme.typography.displaySmall
@@ -144,7 +134,7 @@ fun EditNumberField(
 ) {
     TextField(
         value = value,
-        singleLine = true,
+        singleLine = true, // Condenses text to a single, horizontally scrollable line
         leadingIcon = { Icon(painter = painterResource(id = leadingIcon), null) },
         modifier = modifier,
         onValueChange = onValueChanged,
@@ -184,6 +174,7 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boo
     if (roundUp) {
         tip = kotlin.math.ceil(tip)
     }
+    // NumberFormat displays the format of the tip as currency.
     return NumberFormat.getCurrencyInstance().format(tip)
 }
 
