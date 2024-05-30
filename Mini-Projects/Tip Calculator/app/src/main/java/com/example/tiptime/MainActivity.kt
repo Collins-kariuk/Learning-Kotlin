@@ -158,8 +158,8 @@ fun RoundTheTipRow(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.End),
-            checked = roundUp,
-            onCheckedChange = onRoundUpChanged
+            checked = roundUp, // Whether switch is checked - the state of the Switch composable
+            onCheckedChange = onRoundUpChanged // Callback to be called when the switch is clicked
         )
     }
 }
