@@ -67,6 +67,28 @@ fun AffirmationsApp() {
     )
 }
 
+//import com.example.affirmations.data.Datasource
+//
+//@Composable
+//fun AffirmationsApp() {
+//    val layoutDirection = LocalLayoutDirection.current
+//    Surface(
+//        Modifier = Modifier
+//            .fillMaxSize()
+//            .statusBarsPadding()
+//            .padding(
+//                start = WindowInsets.safeDrawing.asPaddingValues()
+//                    .calculateStartPadding(layoutDirection),
+//                end = WindowInsets.safeDrawing.asPaddingValues()
+//                    .calculateEndPadding(layoutDirection),
+//            ),
+//    ) {
+//        AffirmationsList(
+//            affirmationList = Datasource().loadAffirmations(),
+//        )
+//    }
+//}
+
 @Composable
 fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier) {
