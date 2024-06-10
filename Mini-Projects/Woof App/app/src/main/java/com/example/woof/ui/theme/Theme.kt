@@ -86,6 +86,9 @@ private val DarkColors = darkColorScheme(
 fun WoofTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
+    // If dynamicColor is true and the build version is S or higher, it checks if the device is in
+    // darkTheme or not. If it is in dark theme, colorScheme will be set to dynamicDarkColorScheme.
+    // If it is not in dark theme, colorScheme will be set to dynamicLightColorScheme.
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
