@@ -44,14 +44,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-// Compose uses a Modifier object, which is a collection of elements that decorate or modify the
-// behavior of Compose UI elements. You use this to style the UI components of the Dice Roller app's
-// components.
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
     // NB (1): Composables are stateless by default, which means that they don't hold a value and
     // can be recomposed any time by the system, which results in the value being reset. However,
     // Compose provides a convenient way to avoid this. Composable functions can store an object in
     // memory using the remember composable.
+
     // NB (2): The mutableStateOf() function returns an observable which basically means that when
     // the value of the result variable changes, a recomposition is triggered, the value of the
     // result is reflected, and the UI refreshes.
@@ -66,10 +64,7 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         else -> R.drawable.dice_6
     }
 
-    Column(modifier = modifier,
-        // centers the image and the button
-        horizontalAlignment = Alignment.CenterHorizontally) {
-
+    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Image(painter = painterResource(imageResource), contentDescription = result.toString())
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -78,11 +73,12 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
             // NB (1): The braces, in this case, represent what is known as a lambda, the area
             // inside of the braces being the lambda body. When a function is passed as an argument,
             // it can also be referred to as a "callback".
+
             // NB (2): A lambda is a function literal, which is a function like any other, but
             // instead of being declared separately with the fun keyword, it is written inline and
             // passed as an expression.
 
-            // randomly generates a number between 1 and 6 and assigns it to the result variable
+            // Randomly generates a number between 1 and 6 and assigns it to the result variable
             onClick = { result = (1..6).random() },
         ) {
             // Text that is displayed on the button
