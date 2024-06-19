@@ -37,7 +37,8 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colorScheme.background) {
                     // Call the GreetingImage composable function with message and from parameters
-                    GreetingImage(message = stringResource(R.string.happy_birthday_text),
+                    GreetingImage(
+                        message = stringResource(R.string.happy_birthday_text),
                         from = stringResource(R.string.signature_text)
                     )
                 }
@@ -52,49 +53,48 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
-            .fillMaxSize()  // Make the column fill the entire available space
-            .padding(8.dp)  // Add padding around the column
+            .fillMaxSize() // Make the column fill the entire available space
+            .padding(8.dp) // Add padding around the column
     ) {
         // The main message text
         Text(
             text = message,
-            fontSize = 75.sp,  // Set the font size
-            lineHeight = 116.sp,  // Set the line height
-            textAlign = TextAlign.Center  // Center align the text
+            fontSize = 75.sp, // Set the font size
+            lineHeight = 116.sp, // Set the line height
+            textAlign = TextAlign.Center // Center align the text
         )
         // Display the 'from' text
         Text(
             text = from,
-            fontSize = 36.sp,  // Set the font size
+            fontSize = 36.sp, // Set the font size
             modifier = Modifier
-                .padding(16.dp)  // Add padding around the text
+                .padding(16.dp) // Add padding around the text
                 // Center align the text horizontally
                 .align(alignment = Alignment.CenterHorizontally)
-                .background(color = Color.Green)  // Set the background color
+                .background(color = Color.Green) // Set the background color
         )
     }
 }
 
 @Composable
-fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
-    // Load the image resource
-    val image = painterResource(R.drawable.androidparty)
+fun GreetingImage(message: String, from: String) {
+    val image = painterResource(R.drawable.androidparty) // Load the image resource
     // Create a box to overlap the image and texts
     Box {
         // Display the image
         Image(
             painter = image,
-            contentDescription = null,  // No content description for accessibility
-            contentScale = ContentScale.Crop,  // Scale the image to fill the bounds
-            alpha = 0.5F  // Set the transparency level of the image
+            contentDescription = null,
+            contentScale = ContentScale.Crop, // Scale the image to fill the bounds
+            alpha = 0.5F // Set the transparency level of the image
         )
         // Call the GreetingText composable function to display the texts
         GreetingText(
             message = message,
             from = from,
             modifier = Modifier
-                .fillMaxSize()  // Make the text fill the entire available space
-                .padding(8.dp)  // Add padding around the text
+                .fillMaxSize() // Make the text fill the entire available space
+                .padding(8.dp) // Add padding around the text
         )
     }
 }
@@ -105,7 +105,9 @@ fun BirthdayCardPreview() {
     // Apply the app theme for the preview
     HappyBirthdayTheme {
         // Call the GreetingImage composable function with preview texts
-        GreetingImage(stringResource(R.string.happy_birthday_text),
-            stringResource(R.string.signature_text))
+        GreetingImage(
+            stringResource(R.string.happy_birthday_text),
+            stringResource(R.string.signature_text)
+        )
     }
 }
