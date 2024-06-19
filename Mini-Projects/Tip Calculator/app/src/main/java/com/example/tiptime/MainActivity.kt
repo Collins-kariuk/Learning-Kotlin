@@ -94,7 +94,7 @@ fun TipTimeLayout() {
             ),
             value = amountInput,
             onValueChanged = { amountInput = it },
-            modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
+            modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth()
         )
         // The "Tip Percentage" text field
         EditNumberField(
@@ -106,7 +106,7 @@ fun TipTimeLayout() {
             ),
             value = tipInput,
             onValueChanged = { tipInput = it },
-            modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
+            modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth()
         )
         // The "Round the tip" toggle switch
         RoundTheTipRow(
