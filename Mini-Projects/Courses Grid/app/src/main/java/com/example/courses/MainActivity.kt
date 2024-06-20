@@ -138,13 +138,12 @@ fun TopicCard(topic: Topic, modifier: Modifier = Modifier) {
 @Composable
 fun TopicPreview() {
     CoursesTheme {
-        val topic = Topic(R.string.photography, 321, R.drawable.photography)
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            TopicCard(topic = topic)
-        }
+        TopicGrid(
+            modifier = Modifier.padding(
+                start = dimensionResource(R.dimen.padding_small),
+                top = dimensionResource(R.dimen.padding_small),
+                end = dimensionResource(R.dimen.padding_small),
+            )
+        )
     }
 }
