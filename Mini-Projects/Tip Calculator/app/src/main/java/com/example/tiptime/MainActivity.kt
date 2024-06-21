@@ -48,9 +48,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TipTimeTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                ) {
+                Surface(modifier = Modifier.fillMaxSize()) {
                     TipTimeLayout()
                 }
             }
