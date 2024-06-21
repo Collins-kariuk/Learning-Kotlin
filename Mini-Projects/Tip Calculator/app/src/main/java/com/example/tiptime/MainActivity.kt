@@ -39,6 +39,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.material3.Slider
+import androidx.compose.runtime.mutableDoubleStateOf
 import com.example.tiptime.ui.theme.TipTimeTheme
 import java.text.NumberFormat
 
@@ -55,6 +57,24 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+//// Add a slider to select the tip percentage
+//@Composable
+//fun TipPercentageSlider(
+//    value: Double,
+//    onValueChange: (Float) -> Unit,
+//    modifier: Modifier = Modifier
+//) {
+//    Column(modifier = modifier) {
+//        Text(text = "Tip Percentage: ${value.toInt()}%")
+//        Slider(
+//            value = value.toFloat(),
+//            onValueChange = onValueChange,
+//            valueRange = 0f..30f,
+//            steps = 5 // Optional: define steps if you want to limit increments
+//        )
+//    }
+//}
 
 @Composable
 fun TipTimeLayout() {
@@ -106,6 +126,15 @@ fun TipTimeLayout() {
             onValueChanged = { tipInput = it },
             modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth()
         )
+
+//    var tipPercent by remember { mutableDoubleStateOf(15.0)}
+//    TipPercentageSlider(
+//        value = tipPercent,
+//        onValueChange = { tipPercent = it.toDouble() },
+//        modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth()
+//    )
+
+
         // The "Round the tip" toggle switch
         RoundTheTipRow(
             roundUp = roundUp,
