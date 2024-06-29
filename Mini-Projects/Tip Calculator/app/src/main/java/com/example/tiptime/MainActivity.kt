@@ -58,32 +58,15 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//// Add a slider to select the tip percentage
-//@Composable
-//fun TipPercentageSlider(
-//    value: Double,
-//    onValueChange: (Float) -> Unit,
-//    modifier: Modifier = Modifier
-//) {
-//    Column(modifier = modifier) {
-//        Text(text = "Tip Percentage: ${value.toInt()}%")
-//        Slider(
-//            value = value.toFloat(),
-//            onValueChange = onValueChange,
-//            valueRange = 0f..30f,
-//            steps = 5 // Optional: define steps if you want to limit increments
-//        )
-//    }
-//}
-
 @Composable
 fun TipTimeLayout() {
-    var amountInput by remember { mutableStateOf("") }
-    var tipInput by remember { mutableStateOf("") }
+    var amountInput by remember { mutableDoubleStateOf(0.0) }
+    var tipInput by remember { mutableDoubleStateOf(15.0) }
     var roundUp by remember { mutableStateOf(false) }
 
-    val amount = amountInput.toDoubleOrNull() ?: 0.0
-    val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
+    val amount = amountInput
+    val tipPercent = tipInput
+
     val tip = calculateTip(amount, tipPercent, roundUp)
 
     Column(
@@ -127,14 +110,6 @@ fun TipTimeLayout() {
             modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth()
         )
 
-//    var tipPercent by remember { mutableDoubleStateOf(15.0)}
-//    TipPercentageSlider(
-//        value = tipPercent,
-//        onValueChange = { tipPercent = it.toDouble() },
-//        modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth()
-//    )
-
-
         // The "Round the tip" toggle switch
         RoundTheTipRow(
             roundUp = roundUp,
@@ -155,8 +130,8 @@ fun EditNumberField(
     @StringRes label: Int,
     @DrawableRes leadingIcon: Int,
     keyboardOptions: KeyboardOptions,
-    value: String,
-    onValueChanged: (String) -> Unit,
+    value: Double,
+    onValueChanged: (Double) -> Unit,
     modifier: Modifier = Modifier
 ) {
     TextField(
@@ -198,7 +173,7 @@ fun RoundTheTipRow(
  */
 private fun calculateTip(
     amount: Double,
-    tipPercent: Double = 15.0,
+    tipPercent: Double,
     roundUp: Boolean
 ): String {
     var tip = tipPercent / 100 * amount
